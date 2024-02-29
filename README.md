@@ -1,67 +1,48 @@
-# Getting Started ⚡️ Bolt for JavaScript
-> Slack app example from 📚 [Getting started with Bolt for JavaScript tutorial][1]
+# Slack Bot - Ticket Creator
 
 ## Overview
 
-This is a Slack app built with the [Bolt for JavaScript framework][2] that showcases
-responding to events and interactive buttons.
+The Slack Bot - Ticket Creator is a simple yet powerful tool designed to streamline the process of creating issues or tickets in Github repo directly from Slack. With just a reaction, users can effortlessly turn a message into a structured and actionable item in your issue tracker.
 
-## Running locally
 
-### 0. Create a new Slack App
+## Installation
 
-- Go to https://api.slack.com/apps
-- Click **Create App**
-- Choose a workspace
-- Enter App Manifest using contents of `manifest.yaml`
-- Click **Create**
+1. **Create a Slack App:**
+   - Navigate to [Slack App Management](https://api.slack.com/apps).
+   - Click on "Create New App."
+   - Give your app a name (e.g., Ticket Creator) and select the desired workspace.
 
-Once the app is created click **Install to Workspace** 
-Then scroll down in Basic Info and click **Generate Token and Scopes** with both scopes
+2. **Enable Event Subscriptions:**
+   - In your app settings, go to "Event Subscriptions" and enable them.
+   - Set the Request URL to your server endpoint where the bot is hosted.
 
-### 1. Setup environment variables
+3. **Subscribe to Bot Events:**
+   - Subscribe to the `reaction_added` event.
 
-```zsh
-# Replace with your bot and app token
-export SLACK_BOT_TOKEN=<your-bot-token> # from the OAuth section
-export SLACK_APP_TOKEN=<your-app-level-token> # from the Basic Info App Token Section
-```
+4. **Install App to Workspace:**
+   - Install the app to your workspace and grant the necessary permissions.
 
-### 2. Setup your local project
+5. **Configure Environment Variables:**
+   - Set up the required environment variables for your server:
+     - `SLACK_SIGNING_SECRET`: Your Slack app's signing secret.
+     - `SLACK_APP_TOKEN`: Your Slack app's App token.
+     - `SLACK_BOT_TOKEN`: Your Slack app's Bot token.
+     - `SLACK_SIGNING_SECRET`: Your slack Signing Secret.
+     - `GITHUB_TOKEN`: Your Github Access Token.
+     - `GITHUB_OWNER`: Your Github username.
+     - `GITHUB_REPO`: Your Github repository.
 
-```zsh
-# Clone this project onto your machine
-git clone https://github.com/slackapi/bolt-js-getting-started-app.git
+6. **Run the Bot:**
+   - Deploy the bot to your server or cloud platform.
+   - Start the bot application.
 
-# Change into the project
-cd bolt-js-getting-started-app/
+## Usage
 
-# Install the dependencies
-npm install
-```
+1. **React to a Message:**
+   - In any channel, react to a message with the predefined "ticket" reaction emoji.
 
-### 3. Start servers
-```zsh
-npm run start
-```
+2. **Confirmation:**
+   - The bot will acknowledge the reaction and provide a link to the newly created issue.
 
-### 4. Test
-
-Go to the installed workspace and type **Hello** in a DM to your new bot. You can also type **Hello** in a channel where the bot is present
-
-## Contributing
-
-### Issues and questions
-
-Found a bug or have a question about this project? We'd love to hear from you!
-
-1. Browse to [slackapi/bolt-js/issues][4]
-1. Create a new issue
-1. Select the `[x] examples` category
-
-See you there and thanks for helping to improve Bolt for everyone!
-
-[1]: https://slack.dev/bolt-js/tutorial/getting-started
-[2]: https://slack.dev/bolt-js/
-[3]: https://slack.dev/bolt-js/tutorial/getting-started#setting-up-events
-[4]: https://github.com/slackapi/bolt-js/issues/new
+3. **Access the Issue:**
+   - Click on the provided link to access the issue on Github.
